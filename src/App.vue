@@ -8,32 +8,50 @@ import LongBreak from "./components/LongBreak.vue";
 const currentTab = ref("pomodoro");
 </script>
 <template>
-  <button @click="currentTab = 'pomodoro'">Pomodoro</button>
-  <button @click="currentTab = 'shortBreak'">Short Break</button>
-  <button @click="currentTab = 'longBreak'">Long Break</button>
+  <div class="card">
+    <button @click="currentTab = 'pomodoro'">Pomodoro</button>
+    <button @click="currentTab = 'shortBreak'">Short Break</button>
+    <button @click="currentTab = 'longBreak'">Long Break</button>
 
-  <Pomodoro v-if="currentTab === 'pomodoro'" />
-  <ShortBreak v-if="currentTab === 'shortBreak'" />
-  <LongBreak v-if="currentTab === 'longBreak'" />
+    <Pomodoro v-if="currentTab === 'pomodoro'" />
+    <ShortBreak v-if="currentTab === 'shortBreak'" />
+    <LongBreak v-if="currentTab === 'longBreak'" />
+  </div>
 </template>
 
 <style>
 body {
+  margin: 0px;
+  padding: 0px;
+  background-image: url(./assets/paper.png);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  /* min-height: 10vh; */
+  width: 100vw;
+  background-position: center;
   font-size: 32px;
+  text-align: center;
 }
+
+.card {
+  align-self: center;
+  justify-self: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+#display {
+  background-color: aqua;
+
+  margin: 8px 0px 0px 0px;
+  padding: 0px;
+}
+button {
+  padding: 8px;
+  margin: 0px;
+}
+/* button {
+  background-color: aqua;
+}  */
 </style>
-
-<!-- <script setup>
-import { ref, onMounted } from 'vue'
-import Child from './Child.vue'
-
-const child = ref(null)
-
-onMounted(() => {
-  // child.value will hold an instance of <Child />
-})
-</script>
-
-<template>
-  <Child ref="child" />
-</template> -->

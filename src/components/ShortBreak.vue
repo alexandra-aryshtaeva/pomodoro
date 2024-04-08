@@ -73,7 +73,7 @@ function isInput() {
 </script>
 
 <template>
-  <div class="card">
+  <div>
     <div>{{ display }}</div>
     <button v-if="startBtn" @click="start">Start</button>
 

@@ -9,6 +9,7 @@ const initalTimer = ref(25 * 60);
 let timeInterval;
 let startBtn = ref(true);
 let input = ref("");
+
 let showInput = ref(false);
 
 const display = computed(() => {
@@ -73,13 +74,10 @@ function isInput() {
 </script>
 
 <template>
-  <div class="card">
-    <div>{{ display }}</div>
-    <button v-if="startBtn" @click="start">Start</button>
-
-    <button v-if="!startBtn" @click="stop">Pause</button>
-    <button @click="restart">Restart</button>
-    <button @click="isInput">Config</button>
-    <input v-if="showInput" type="number" v-model="input" min="0" />
-  </div>
+  <div id="display">{{ display }}</div>
+  <button v-if="startBtn" @click="start">Start</button>
+  <button v-if="!startBtn" @click="stop">Pause</button>
+  <button @click="restart">Restart</button>
+  <button @click="isInput">Config</button>
+  <input v-if="showInput" type="number" v-model="input" />
 </template>
