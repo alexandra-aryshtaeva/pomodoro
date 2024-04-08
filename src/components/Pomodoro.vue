@@ -75,9 +75,11 @@ function isInput() {
 
 <template>
   <div id="display">{{ display }}</div>
-  <button v-if="startBtn" @click="start">Start</button>
-  <button v-if="!startBtn" @click="stop">Pause</button>
-  <button @click="restart">Restart</button>
-  <button @click="isInput">Config</button>
+  <div id="bottomBtns">
+    <button v-if="startBtn" @click="start">Start</button>
+    <button v-if="!startBtn" @click="stop">Pause</button>
+    <button @click="restart">Restart</button>
+    <button @click="isInput">Config</button>
+  </div>
   <input v-if="showInput" type="number" v-model="input" />
 </template>
