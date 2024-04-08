@@ -1,33 +1,12 @@
 <script setup>
-import { ref } from "vue";
-const timer = ref(4);
-let timeInterval;
+import Pomodoro from "./components/Pomodoro.vue";
 
-function start() {
-  if (timeInterval) return;
-
-  timeInterval = setInterval(() => {
-    timer.value--;
-
-    if (timer.value === 0) {
-      stop();
-    }
-  }, 1000);
-}
-
-function stop() {
-  clearInterval(timeInterval);
-}
+// const current = ref(Pomodoro);
 </script>
 <template>
-  <button>Pomodoro</button>
   <button>Long Break</button>
   <button>Short Break</button>
-  <div>{{ timer }}</div>
-  <button @click="start">Start</button>
-  <button @click="stop">Pause</button>
-  <button>Restart</button>
-  <button>Config</button>
+  <Pomodoro />
 </template>
 
 <style>
@@ -35,3 +14,18 @@ body {
   font-size: 32px;
 }
 </style>
+
+<!-- <script setup>
+import { ref, onMounted } from 'vue'
+import Child from './Child.vue'
+
+const child = ref(null)
+
+onMounted(() => {
+  // child.value will hold an instance of <Child />
+})
+</script>
+
+<template>
+  <Child ref="child" />
+</template> -->
