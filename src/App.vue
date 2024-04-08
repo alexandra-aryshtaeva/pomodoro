@@ -29,9 +29,13 @@ body {
   background-size: cover;
   height: 100vh;
   width: 100vw;
-  width: 100vw;
   background-position: center;
-  font-size: 32px;
+  /*  */
+  font-size: 96px;
+  font-family: "Indie Flower";
+  font-weight: 600;
+
+  /*  */
   display: flex;
   justify-content: center;
   text-align: center;
@@ -48,10 +52,10 @@ body {
 }
 
 #display {
-  margin: 4px 0px;
+  margin: 32px 0px 0px 0px;
 }
 button {
   padding: 8px 8px;
-  margin: 4px 16px;
+  margin: 4px 0px;
 }
 </style>
