@@ -2,7 +2,7 @@
 import { computed, ref, watch } from "vue";
 
 //
-const timer = ref(25 * 60);
+const timer = ref(5 * 60);
 // restart Only
 const initalTimer = ref(25 * 60);
 //

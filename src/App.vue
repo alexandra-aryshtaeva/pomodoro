@@ -1,12 +1,20 @@
 <script setup>
+import { ref } from "vue";
 import Pomodoro from "./components/Pomodoro.vue";
+// dont forget to update the localStorage
+import ShortBreak from "./components/ShortBreak.vue";
+import LongBreak from "./components/LongBreak.vue";
 
-// const current = ref(Pomodoro);
+const currentTab = ref("pomodoro");
 </script>
 <template>
-  <button>Long Break</button>
-  <button>Short Break</button>
-  <Pomodoro />
+  <button @click="currentTab = 'pomodoro'">Pomodoro</button>
+  <button @click="currentTab = 'shortBreak'">Short Break</button>
+  <button @click="currentTab = 'longBreak'">Long Break</button>
+
+  <Pomodoro v-if="currentTab === 'pomodoro'" />
+  <ShortBreak v-if="currentTab === 'shortBreak'" />
+  <LongBreak v-if="currentTab === 'longBreak'" />
 </template>
 
 <style>

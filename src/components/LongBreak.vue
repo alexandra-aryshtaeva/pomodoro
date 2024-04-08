@@ -2,7 +2,7 @@
 import { computed, ref, watch } from "vue";
 
 //
-const timer = ref(25 * 60);
+const timer = ref(15 * 60);
 // restart Only
 const initalTimer = ref(25 * 60);
 //
@@ -73,13 +73,11 @@ function isInput() {
 </script>
 
 <template>
-  <div class="card">
-    <div>{{ display }}</div>
-    <button v-if="startBtn" @click="start">Start</button>
+  <div>{{ display }}</div>
+  <button v-if="startBtn" @click="start">Start</button>
 
-    <button v-if="!startBtn" @click="stop">Pause</button>
-    <button @click="restart">Restart</button>
-    <button @click="isInput">Config</button>
-    <input v-if="showInput" type="number" v-model="input" min="0" />
-  </div>
+  <button v-if="!startBtn" @click="stop">Pause</button>
+  <button @click="restart">Restart</button>
+  <button @click="isInput">Config</button>
+  <input v-if="showInput" type="number" v-model="input" min="0" />
 </template>
