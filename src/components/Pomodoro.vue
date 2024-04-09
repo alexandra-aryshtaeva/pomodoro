@@ -74,8 +74,8 @@ function isInput() {
 </script>
 
 <template>
-  <div id="display">{{ display }}</div>
-  <div id="bottomBtns">
+  <div class="display" :class="{ active: !startBtn }">{{ display }}</div>
+  <div class="menu">
     <button v-if="startBtn" @click="start">Start</button>
     <button v-if="!startBtn" @click="stop">Pause</button>
     <button @click="restart">Restart</button>
