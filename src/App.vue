@@ -66,7 +66,7 @@ main {
 
 .display {
   font-family: "Indie Flower";
-  font-size: 128px;
+  font-size: 112px;
   font-weight: 600;
   display: flex;
   flex: 3;
@@ -103,7 +103,7 @@ main {
   display: flex;
   align-items: center;
   flex: 1;
-  gap: 12px;
+  gap: 4px;
 }
 
 @media screen and (min-width: 768px) {
@@ -117,7 +117,7 @@ main {
   display: flex;
   flex: 1;
   align-items: center;
-  gap: 12px;
+  gap: 4px;
 
   button {
     padding: 8px 32px;
@@ -135,8 +135,8 @@ button {
   padding: 8px 16px;
   margin: 0px 0px;
   font-family: "Indie Flower";
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 18px;
   color: var(--pink);
   background-color: #aa4a3e;
   border-radius: 16px;
@@ -153,6 +153,38 @@ button:hover {
 @media screen and (min-width: 768px) {
   button {
     font-size: 32px;
+  }
+}
+
+.modal {
+  display: block;
+  align-content: center;
+
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(126, 126, 126, 0.5);
+}
+#input {
+  display: block;
+  margin: 0 auto;
+  height: 40px;
+  width: 100px;
+  color: white;
+  background-color: #88392e;
+  outline: none;
+  border: solid white 2px;
+  border-radius: 8px;
+  padding-left: 8px;
+  text-align: center;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  #input {
+    font-size: 20px;
+    height: 40px;
+    width: 350px;
   }
 }
 </style>

@@ -5,11 +5,12 @@ import { computed, ref, watch } from "vue";
 const timer = ref(15 * 60);
 // restart Only
 const initalTimer = ref(25 * 60);
-//
 let timeInterval;
 let startBtn = ref(true);
 let input = ref("");
 let showInput = ref(false);
+let audio = new Audio("/ding.wav");
+let modal = ref(false);
 
 const display = computed(() => {
   let minutes = Math.floor(timer.value / 60);
@@ -32,6 +33,7 @@ function start() {
 
     if (timer.value === 0) {
       stop();
+      audio.play();
     }
   }, 1000);
 }
@@ -67,19 +69,26 @@ watch(input, (newInputValue) => {
   // newInpouteValue => timer.value
 });
 
-function isInput() {
+function showModal() {
+  modal.value = true;
   showInput.value = true;
 }
 </script>
 
 <template>
-  <div>
-    <div>{{ display }}</div>
+  <div class="display" :class="{ active: !startBtn }">{{ display }}</div>
+  <div class="menu">
     <button v-if="startBtn" @click="start">Start</button>
-
     <button v-if="!startBtn" @click="stop">Pause</button>
     <button @click="restart">Restart</button>
-    <button @click="isInput">Config</button>
-    <input v-if="showInput" type="number" v-model="input" min="0" />
+    <button @click="showModal">Config</button>
+  </div>
+  <div v-if="modal" ref="modal" class="modal">
+    <input
+      @keyup.enter="modal = false"
+      id="input"
+      type="number"
+      v-model="input"
+    />
   </div>
 </template>
