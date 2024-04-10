@@ -64,6 +64,20 @@ main {
   width: 100%;
 }
 
+/*__________________ DISPLAY */
+
+.display-wrapper {
+  position: relative;
+  height: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  .display-wrapper {
+    font-size: 260px;
+    height: 450px;
+  }
+}
+
 .display {
   font-family: "Indie Flower";
   font-size: 112px;
@@ -71,9 +85,12 @@ main {
   display: flex;
   flex: 3;
   align-items: center;
-  transform: rotate(7deg);
+  position: absolute;
+  top: 25%;
+  left: 13%;
+  transform: rotate(5deg);
   color: var(--pink);
-  text-shadow: 3px 0px 3px rgb(165, 115, 115);
+  text-shadow: 3px 0px 3px rgb(90, 54, 54);
 }
 
 .display.active {
@@ -85,7 +102,7 @@ main {
     transform: rotate(5deg);
   }
   50% {
-    transform: rotate(-5deg);
+    transform: rotate(-3deg);
   }
   100% {
     transform: rotate(5deg);
@@ -94,9 +111,43 @@ main {
 
 @media screen and (min-width: 768px) {
   .display {
-    font-size: 160px;
+    font-size: 168px;
+    transform: rotate(5deg);
   }
 }
+
+.tomato {
+  opacity: 0.8;
+  height: 300px;
+  transform: rotate(-5deg);
+
+  -webkit-filter: drop-shadow(0px 0px 5px #222);
+  filter: drop-shadow(0px 0px 5px #222);
+}
+
+.tomato.active {
+  animation: sticker infinite 1s;
+}
+
+@keyframes sticker {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tomato {
+    height: 450px;
+  }
+}
+
+/*________________________ BUTTONS */
 
 #tab-buttons {
   /* background-color: antiquewhite; */
@@ -104,10 +155,12 @@ main {
   align-items: center;
   flex: 1;
   gap: 4px;
+  margin-bottom: 110px;
 }
 
 @media screen and (min-width: 768px) {
   #tab-buttons {
+    margin-bottom: 200px;
     gap: 32px;
   }
 }
@@ -118,6 +171,7 @@ main {
   flex: 1;
   align-items: center;
   gap: 4px;
+  margin-top: 110px;
 
   button {
     padding: 8px 32px;
@@ -126,6 +180,7 @@ main {
 
 @media screen and (min-width: 768px) {
   .menu {
+    margin-top: 200px;
     gap: 32px;
   }
 }
@@ -179,7 +234,10 @@ button:hover {
   text-align: center;
   font-size: 20px;
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 @media screen and (min-width: 768px) {
   #input {
     font-size: 20px;

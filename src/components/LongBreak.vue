@@ -1,13 +1,18 @@
 <script setup>
 import { computed, ref, watch } from "vue";
 
-//
-const timer = ref(15 * 60);
+const INITIAL_MINUTES = 15;
+const DEFAULT_MINUTES = Number(
+  localStorage.getItem("longBreaktimer") ?? INITIAL_MINUTES
+);
+
+const timer = ref(DEFAULT_MINUTES * 60);
 // restart Only
-const initalTimer = ref(25 * 60);
+const initalTimer = INITIAL_MINUTES * 60;
+
 let timeInterval;
 let startBtn = ref(true);
-let input = ref("");
+let input = ref(DEFAULT_MINUTES);
 let showInput = ref(false);
 let audio = new Audio("/ding.wav");
 let modal = ref(false);
@@ -45,7 +50,8 @@ function stop() {
 }
 
 function restart() {
-  timer.value = initalTimer.value;
+  timer.value = initalTimer;
+  localStorage.setItem("longBreaktimer", INITIAL_MINUTES);
   stop();
 }
 
@@ -56,17 +62,18 @@ function restart() {
 watch(input, (newInputValue) => {
   // input = newInputValue (minutes(ex:25))
   // newInputValue
-  if (newInputValue >= 24 * 60) {
-    newInputValue = 24 * 60;
+  if (newInputValue >= 99) {
+    newInputValue = 99;
+    input.value = newInputValue;
   }
   if (newInputValue < 0) {
     newInputValue = 0;
   }
 
+  // minutes result
   timer.value = newInputValue * 60;
-  //  minutes result
 
-  // newInpouteValue => timer.value
+  localStorage.setItem("longBreaktimer", newInputValue);
 });
 
 function showModal() {
@@ -76,7 +83,11 @@ function showModal() {
 </script>
 
 <template>
-  <div class="display" :class="{ active: !startBtn }">{{ display }}</div>
+  <div class="display-wrapper">
+    <img class="tomato" src="/tomato.png" alt="" />
+    <div class="display" :class="{ active: !startBtn }">{{ display }}</div>
+  </div>
+
   <div class="menu">
     <button v-if="startBtn" @click="start">Start</button>
     <button v-if="!startBtn" @click="stop">Pause</button>
